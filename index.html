@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <script src="script.js"></script>
     <!--Making the header with the high scores button and the time remaining. Leaving that visible the whole time.-->
         <header>
             <div>
@@ -19,7 +20,7 @@
             </div>
         </header>
 
-        <main class="quiz-box"
+        <main class="quiz-box">
             <section class="primary-box">
 
                 <div id="primary-text">
@@ -29,6 +30,7 @@
                     <button class="other-buttons" id="start-quiz">Start!</button>
                 </div>
 
+                <!--Here is where I'll house everything related to the questions. The question will flash above the buttons. Users will have 4 options.-->
                 <div id="quiz">
                     <h3 id="question-prompt"></h3>
                     <div id="solution-options">
@@ -47,8 +49,15 @@
                     </div>
                 </div>
 
-            </section>
+                <div id="scores-list">
+                    <h4 id="scores-header">Scores</h4>
+                    <div id="scores"></div>
+                    <button type="button" id="return" class="other-buttons">Return</button>
+                    <button type="button" id="clear" class="other-buttons">Clear</button>
+                </div>
 
+            </section>
+        </main>
   </body>
 
 </html>
