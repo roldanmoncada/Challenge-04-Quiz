@@ -31,3 +31,39 @@ header {
     padding: 5px;
 }
 
+main {
+    text-align: center;
+    border: gold 5px solid;
+    padding: 5px;
+    margin-top: 25px;
+}
+
+.other-buttons {
+    color: gold;
+    background-color: royalblue;
+    padding: 3px;
+    border: 2px;
+}
+
+.other-buttons:hover {
+    opacity: .7;
+}
+
+#primary-header {
+    color: royalblue;
+    text-decoration: underline 3px;
+    margin: 15px;
+}
+
+.user-greeting {
+    color: royalblue;
+    font-size: 2rem;
+    padding: 5px;
+}
+
+#start-quiz {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    width: 8rem;
+}
