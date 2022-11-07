@@ -67,3 +67,51 @@ main {
     margin: 5px;
     width: 8rem;
 }
+
+#question-prompt {
+    color: royalblue;
+    font-size: 2rem;
+    padding: 5px;
+}
+
+#solution-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#submit-user-name {
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+    width: 8rem;
+}
+
+#user-name {
+
+}
+
+#score-input-name {
+    color: royalblue;
+    
+    padding: 5px;
+    margin: 10px;
+}
+
+#user-name {
+    padding: 5px;
+    
+}
+
+#scores-list {
+    color: royalblue;
+    margin: auto;
+}
+
+#quiz, #score-input-name, #scores-list {
+    display: none;
+}
+
+/* Wooo!! @the above */
+
+
