@@ -64,3 +64,10 @@ let quizQuestions = [
         answer: "localStorage.getItem('')"
     }
 ];
+
+//Now the functionality:
+
+//Starting the timer (at 60) and updating the timer 
+const startTimer = () => {
+    timerEl.textContent = `Time Remaining: `
+}
