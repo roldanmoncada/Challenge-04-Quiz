@@ -70,17 +70,15 @@ let quizQuestions = [
 //Starting the timer (at 60) and updating the timer. Going to use a string template literal to make updating the HTML elements' text easier. Doing this HW after Byron spooked us recently with saying that we should only be using const or let so I am doing just that to be safe.
 
 
-// Constant to update the time-remaining element in the header of the  HTML doc.
+// Constants that impact Header elements
 const timeRemEl = document.querySelector('#time-remaining');
+
+// Constants that impact the Score Page's elements
 const userScoreEl = document.querySelector('#user-score');
 
-// Defining the start of the timer to be 60 seconds as I indicated in my "user-greeting" <p> on the HTML doc.
+// Defining global scope lets that I use within code blocks for the quiz's functions
 let startingTime = 60;
-
-// Defining the timePassed variable 
 let timePassed = 0;
-
-// Defining the necessary variables. <--- changed from defining all with individual comments so that the code doesn't get too cluttered. **Doing the same with all other lets or consts that I can group together in any way.
 let currentQ = 0;
 let score = 0;
 
