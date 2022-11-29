@@ -75,6 +75,10 @@ const timeRemEl = document.querySelector('#time-remaining');
 
 // Constants that impact the Score Page's elements
 const userScoreEl = document.querySelector('#user-score');
+const inputScoreEl = document.querySelector('#score-input-name')
+
+// Constants that impact the Quiz Page's elements
+const quizEl = document.querySelector('#quiz')
 
 // Defining global scope lets that I use within code blocks for the quiz's functions
 let startingTime = 60;
@@ -111,5 +115,9 @@ const nextQuestion = () => {
             score += (startingTime - timePassed);
         }
         userScoreEl.textContent = score;
+        hide(quizEl);
+        show(inputScoreEl);
+        timeRemEl.textContent = `Time Remaining: ${startingTime}`;
     }
 }
+
