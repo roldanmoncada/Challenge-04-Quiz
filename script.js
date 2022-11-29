@@ -117,7 +117,17 @@ const nextQuestion = () => {
         userScoreEl.textContent = score;
         hide(quizEl);
         show(inputScoreEl);
-        timeRemEl.textContent = `Time Remaining: ${startingTime}`;
+        timeRemEl.textContent = `Time Remaining: ${startingTime}`; // This provides the remaining time.
     }
 }
 
+// Checks the user's answer based on the current question and updates the user score.
+const checkAnswer = answer => {
+    if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
+        score += 50;
+        displayMessage('Correct!'); // Informs user they selected the correct answer
+    } else {
+        timePassed += 9;
+        displayMessage('Incorrect!'); // Informs user they selected the incorrect answer
+    }
+}
