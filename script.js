@@ -131,3 +131,15 @@ const checkAnswer = answer => {
         displayMessage('Incorrect!'); // Informs user they selected the incorrect answer
     }
 }
+
+
+const displayMessage() = foo => {
+    // Variables that create a linebreak and new div so we can have a little popup that displays the messages we created in lines 128 and 131!
+    let messageHr = document.createElement('hr');
+    let messageEl = document.createElement('div');
+
+    messageEl.textContent = foo;
+    
+
+
+}
