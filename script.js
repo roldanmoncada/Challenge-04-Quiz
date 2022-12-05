@@ -78,7 +78,9 @@ const userScoreEl = document.querySelector('#user-score');
 const inputScoreEl = document.querySelector('#score-input-name')
 
 // Constants that impact the Quiz Page's elements
-const quizEl = document.querySelector('#quiz')
+const quizEl = document.querySelector('#quiz');
+const questionEl = document.querySelector('#question-prompt');
+const answersEl = document.querySelector('#solution-options');
 
 // Defining global scope lets that I use within code blocks for the quiz's functions
 let startingTime = 60;
@@ -130,16 +132,58 @@ const checkAnswer = answer => {
         timePassed += 9;
         displayMessage('Incorrect!'); // Informs user they selected the incorrect answer
     }
-}
+};
 
 
-const displayMessage() = foo => {
+const displayMessage = foo => {
     // Variables that create a linebreak and new div so we can have a little popup that displays the messages we created in lines 128 and 131!
     let messageHr = document.createElement('hr');
     let messageEl = document.createElement('div');
 
     messageEl.textContent = foo;
     
+    // This allows the above variables to be implemented into our nedex.html
+    document.querySelector('.primary-box').appendChild(messageHr);
+    document.querySelector('.primary-box').appendChild(messageEl);
+
+    // This is a timeout that limits the two variables' appearance to about 1/3 of a second.
+    setTimeout(() => {
+       messageEl.remove();
+       messageHr.remove(); 
+    }, 330);
 
 
+
+}
+
+// These two constants show and hide the element by placing it within a function t
+const hideEl = element => {
+    element.style.display = 'none';
+};
+
+const displayEl = element => {
+    element.style.display = 'block';
+};
+
+// This allows the quiz to be reset and specifies to which metrics it will be reset to.
+const reset = () => {
+    score = 0;
+    currentQ = 0;
+    timePassed = 0; 
+    timeRemEl.textContent = `Time Remaining: ${startingTime}`
+};
+
+// This function renders the current question by getting the textContent from the HTML element and setting it as equivalent to our array of questions. The for loop goes through the answers and then sets up the button functionality when the question is displayed.
+const renderQuestion = () => {
+    questionEl.textContent = quizQuestions[currentQ].question;
+
+    for (let i = 0; i < answersEl.children.length; i++) {
+        answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
+        
+    }
+};
+
+
+const renderScores = () => {
+    
 }
