@@ -73,6 +73,9 @@ let quizQuestions = [
 // Constants that impact Header elements
 const timeRemEl = document.querySelector('#time-remaining');
 
+// Constants for elements that fall outside of the other specified sections
+const primaryTextEl = document.querySelector('#primary-text');
+
 // Constants that impact the Score Page's elements
 const userScoreEl = document.querySelector('#user-score');
 const inputScoreEl = document.querySelector('#score-input-name')
@@ -81,6 +84,8 @@ const inputScoreEl = document.querySelector('#score-input-name')
 const quizEl = document.querySelector('#quiz');
 const questionEl = document.querySelector('#question-prompt');
 const answersEl = document.querySelector('#solution-options');
+const scoresEl = document.querySelector("#scores");
+const scoresListEl = document.querySelector('#scores-list');
 
 // Defining global scope lets that I use within code blocks for the quiz's functions
 let startingTime = 60;
@@ -185,5 +190,32 @@ const renderQuestion = () => {
 
 
 const renderScores = () => {
-    
-}
+    scoresEl.innerHTML = '';
+    show(scoresListEl);
+    scoresList =  JSON.parse(localStorage.getItem('scores'));
+
+    for (let i = 0; i < scoresList.length; i++) {
+        let scoreStorage = document.createElement('div');
+
+        scoreStorage.textContent = `${(i+1)}. ${scoresList[i].username} - ${scoresList[i].userScore}`;
+        scoresEl.appendChild(scoreStorage);
+        
+    }
+};
+
+viewScoreListBtnEl.addEventListener('click', () => {
+    hide(quizEl);
+    hide(primaryTextEl);
+    renderScores();
+    hide(userScoreEl);
+    stopTimer();
+    reset();
+});
+
+
+startQuizBtnEl.addEventListener('click', () => {
+    hide(primaryTextEl);
+    startTimer();
+    renderQuestion();
+    show(quizEl);
+});
