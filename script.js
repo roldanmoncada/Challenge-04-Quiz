@@ -69,6 +69,7 @@ const scoresEl = document.querySelector("#scores");
 const scoresListEl = document.querySelector("#scores-list");
 const clearScoresBtnEl = document.querySelector("#clear");
 const viewScoreListBtnEl = document.querySelector("#view-scores");
+const startQuizBtnEl = document.querySelector("#start-quiz");
 
 // Defining global scope lets that I use within code blocks for the quiz's functions
 let startingTime = 60;
