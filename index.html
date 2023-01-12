@@ -1,0 +1,92 @@
+<!--I'll input more comments here and in CSS later!-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mini Code Quiz!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!--Making the header with the high scores button and the time remaining. Leaving that visible the whole time.-->
+    <header>
+      <div>
+        <button id="view-scores">View Scores!</button>
+      </div>
+      <div>
+        <p id="time-remaining">Time Remaining</p>
+      </div>
+    </header>
+
+    <main class="quiz-box">
+      <section class="primary-box">
+        <div id="primary-text">
+          <h2 id="primary-header">Mini Code Quiz!</h2>
+          <p class="user-greeting">
+            Test your junior-level coding knowledge with these 5 questions. You
+            will have 60 seconds.
+          </p>
+          <button class="other-buttons" id="start-quiz">Start!</button>
+        </div>
+
+        <!--Here is where I'll house everything related to the questions. The question will flash above the buttons. Users will have 4 options.-->
+        <div id="quiz">
+          <h3 id="question-prompt"></h3>
+          <div id="solution-options">
+            <div>
+              <button
+                type="button"
+                id="option-1"
+                class="other-buttons"
+              ></button>
+            </div>
+            <div>
+              <button
+                type="button"
+                id="option-2"
+                class="other-buttons"
+              ></button>
+            </div>
+            <div>
+              <button
+                type="button"
+                id="option-3"
+                class="other-buttons"
+              ></button>
+            </div>
+            <div>
+              <button
+                type="button"
+                id="option-4"
+                class="other-buttons"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="score-input-name">
+          <h4>Final Score:<span id="user-score"></span></h4>
+          <p id="user-name">Name: <input type="text" id="user-name-input" /></p>
+          <button type="button" class="other-buttons" id="submit-user-name">
+            Submit!
+          </button>
+        </div>
+
+        <div id="scores-list">
+          <h4>Scores</h4>
+          <div id="scores"></div>
+          <button type="button" id="return" class="other-buttons">
+            Return
+          </button>
+          <button type="button" id="clear" class="other-buttons">Clear</button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
