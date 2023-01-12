@@ -84,7 +84,7 @@ const startTimer = () => {
     timePassed++;
     timeRemEl.textContent = `Time Remaining: ${startingTime - timePassed}`;
     if (timePassed >= startingTime) {
-      currentQ = questions.length();
+      currentQ = quizQuestions.length;
       nextQuestion();
     }
   }, 1000);
@@ -99,7 +99,7 @@ const stopTimer = () => {
 
 const nextQuestion = () => {
   currentQ++; // This adds 1 to the question count every time this function runs
-  if (currentQ < questions.length) {
+  if (currentQ < quizQuestions.length) {
     // This ensures the current question is less than the total length of questions available and if that condition is true, returns the callback function of renderQuestion() to go to the next question.
     renderQuestion();
   } else {
@@ -108,15 +108,15 @@ const nextQuestion = () => {
       score += startingTime - timePassed;
     }
     userScoreEl.textContent = score;
-    hide(quizEl);
-    show(inputScoreEl);
+    hideEl(quizEl);
+    displayEl(inputScoreEl);
     timeRemEl.textContent = `Time Remaining: ${startingTime}`; // This provides the remaining time.
   }
 };
 
 // Checks the user's answer based on the current question and updates the user score.
 const checkAnswer = (answer) => {
-  if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
+  if (quizQuestions[currentQ].answer == quizQuestions[currentQ].choices[answer.id]) {
     score += 50;
     displayMessage("Correct!"); // Informs user they selected the correct answer
   } else {
@@ -166,40 +166,40 @@ const renderQuestion = () => {
 
   for (let i = 0; i < answersEl.children.length; i++) {
     answersEl.children[i].children[0].textContent = `${i + 1}: ${
-      questions[currentQ].choices[i]
+      quizQuestions[currentQ].choices[i]
     }`;
   }
 };
 
 const renderScores = () => {
   scoresEl.innerHTML = "";
-  show(scoresListEl);
-  scoresList = JSON.parse(localStorage.getItem("scores"));
+  displayEl(scoresListEl);
+  highScores = JSON.parse(localStorage.getItem("scores"));
 
-  for (let i = 0; i < scoresList.length; i++) {
+  for (let i = 0; i < highScores.length; i++) {
     let scoreStorage = document.createElement("div");
 
-    scoreStorage.textContent = `${i + 1}. ${scoresList[i].username} - ${
-      scoresList[i].userScore
+    scoreStorage.textContent = `${i + 1}. ${highScores[i].username} - ${
+      scoresListEl[i].userScore
     }`;
     scoresEl.appendChild(scoreStorage);
   }
 };
 
 viewScoreListBtnEl.addEventListener("click", () => {
-  hide(quizEl);
-  hide(primaryTextEl);
+  hideEl(quizEl);
+  hideEl(primaryTextEl);
   renderScores();
-  hide(userScoreEl);
+  hideEl(userScoreEl);
   stopTimer();
   reset();
 });
 
 startQuizBtnEl.addEventListener("click", () => {
-  hide(primaryTextEl);
+  hideEl(primaryTextEl);
   startTimer();
   renderQuestion();
-  show(quizEl);
+  displayEl(quizEl);
 });
 
 answersEl.addEventListener("click", (foo) => {
@@ -210,22 +210,22 @@ answersEl.addEventListener("click", (foo) => {
 });
 
 submitNameBtnEl.addEventListener("click", () => {
-  let startingVal = namEl.value.trim();
+  let startingVal = nameEl.value.trim();
   if (startingVal) {
     let userScore = { username: startingVal, userScore: score };
     nameEl.value = "";
     highScores = JSON.parse(localStorage.getItem("scores")) || [];
     highScores.push(userScore);
     localStorage.getItem("scores", JSON.stringify(highScores));
-    hide(inputScoreEl);
+    hideEl(inputScoreEl);
     renderScores();
     reset();
   }
 });
 
 returnBtnEl.addEventListener("click", () => {
-  hide(scoresListEl);
-  show(primaryTextEl);
+  hideEl(scoresListEl);
+  displayEl(primaryTextEl);
 });
 
 clearScoresBtnEl.addEventListener("click", () => {
